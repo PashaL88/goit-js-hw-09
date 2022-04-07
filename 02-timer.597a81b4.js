@@ -17,6 +17,6 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./types/options":"lJVm","./l10n/default":"SFEe","./utils":"U4Vg","./utils/dom":"UwHZ","./utils/dates":"viQd","./utils/formatting":"KtbI","./utils/polyfills":"pFfd"}],"c0Wa":[function(require,module,exports) {
 
 },{}],"d2uN":[function(require,module,exports) {
-"use strict";var e=t(require("flatpickr"));function t(e){return e&&e.__esModule?e:{default:e}}require("flatpickr/dist/flatpickr.min.css");const a=document.querySelector("[data-start]"),i=new Date;a.disabled=!0;const n={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onClose(e){e[0]<i?window.alert("Please choose a date in the future"):a.disabled=!1}};function r(e){}(0,e.default)("input#datetime-picker",n),a.addEventListener("click",r);
+"use strict";var e=t(require("flatpickr"));function t(e){return e&&e.__esModule?e:{default:e}}require("flatpickr/dist/flatpickr.min.css");const n=document.querySelector("[data-start]"),a=new Date,l=Date.now();n.disabled=!0;let i=null;const r={enableTime:!0,time_24hr:!0,defaultDate:new Date,minuteIncrement:1,onClose(e){e[0]<a?window.alert("Please choose a date in the future"):n.disabled=!1,i=e[0]}};(0,e.default)("input#datetime-picker",r),n.addEventListener("submit",u);let s=null;function u(e){s=setInterval(()=>{const e=i-a;console.log(e)},1e3)}
 },{"flatpickr":"BKNP","flatpickr/dist/flatpickr.min.css":"c0Wa"}]},{},["d2uN"], null)
-//# sourceMappingURL=/goit-js-hw-09/02-timer.03d73db3.js.map
+//# sourceMappingURL=/goit-js-hw-09/02-timer.597a81b4.js.map
