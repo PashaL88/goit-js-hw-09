@@ -6,7 +6,9 @@ import 'flatpickr/dist/flatpickr.min.css';
 const buttonStartEl = document.querySelector('[data-start]');
 
 const date = new Date();
+const now = Date.now();
 buttonStartEl.disabled = true;
+let timeDeadline = null;
 
 const options = {
   enableTime: true,
@@ -19,11 +21,18 @@ const options = {
     } else {
       buttonStartEl.disabled = false;
     }
+    timeDeadline = selectedDates[0];
   },
 };
-
 flatpickr('input#datetime-picker', options);
 
-buttonStartEl.addEventListener('click', onBtnStartClick);
+buttonStartEl.addEventListener('submit', onBtnStartClick);
+
+let intervalId = null;
+
 function onBtnStartClick(event) {
+  intervalId = setInterval(() => {
+    const diff = timeDeadline - date;
+    console.log(diff);
+  }, 1000);
 }
