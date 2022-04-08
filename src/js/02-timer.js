@@ -1,31 +1,30 @@
-// Описан в документации
 import flatpickr from 'flatpickr';
-// Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
-import Notiflix from 'notiflix';
+
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const buttonStartEl = document.querySelector('[data-start]');
+buttonStartEl.disabled = true;
 
 const date = new Date();
 // const now = Date.now();
-buttonStartEl.disabled = true;
+
 let timeDeadline = null;
 
-const options = {
+flatpickr('#datetime-picker', {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] < date) {
-      window.alert('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future');
     } else {
       buttonStartEl.disabled = false;
     }
     timeDeadline = selectedDates[0];
   },
-};
-flatpickr('input#datetime-picker', options);
+});
 
 buttonStartEl.addEventListener('click', onBtnStartClick);
 
